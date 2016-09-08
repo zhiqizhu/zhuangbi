@@ -64,11 +64,12 @@ if __name__ == '__main__':
         PASSWORD='default'
     ))
 
+    # override config from an environment variable
+    app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+    # Heroku dynamically assigns app a port
+    port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', debug=True)
 
-
-# override config from an environment variable
-# app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
 @app.teardown_appcontext
 def close_db(error):
