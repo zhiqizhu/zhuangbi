@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>逼乎注册</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <style>
+        /*.background {*/
+        /*background: linear-gradient(180deg, rgb(41, 68, 103), rgb(192, 215, 225));*/
+        /*width: 100%;*/
+        /*height: 100%;*/
+        /*}*/
+        /*.main{*/
+        /*background-color: white;*/
+        /*width: 80%;*/
+        /*margin-top: 20%;*/
+        /*}*/
+
+        form {
+            margin: 5px;
+            display: flex;
+            flex-flow: column wrap;
+            align-items: center;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+        }
+
+        /*.checkbox {*/
+        /*margin-left: 30px;*/
+        /*width: 200px;*/
+        /*}*/
+
+        /*input {*/
+        /*width: 200px;*/
+        /*}*/
+
+        .background {
+            background: linear-gradient(180deg, rgb(41, 68, 103), rgb(192, 215, 225));
+            width: 100%;
+            height: 100%;
+            flex-flow: column wrap;;
+        }
+
+        section {
+            /*width: 600px;*/
+            height: 700px;
+            background-color: white;
+            margin: 12% 50% 5%;
+            /*display: flex;*/
+            /*flex-flow: row wrap;*/
+            /*padding: 5%;*/
+        }
+
+        h1, p {
+            text-align: center;
+            line-height: 100px;
+        }
+
+        h1 {
+            font-size: 65px;
+        }
+
+        p {
+            font-size: 20px;
+            color: rgb(102, 102, 102);
+        }
+
+        p:nth-child(2), a {
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .form-group input {
+            width: 300px;
+        }
+
+        .btn {
+            width: 300px;
+            background-color: rgb(106, 184, 252);
+            height: 40px;
+            color: white;
+        }
+
+        .btn a {
+            line-height: 20px;
+        }
+
+        .btn:hover {
+            color: white;
+            text-decoration: none;
+            background-color: rgba(106, 184, 252, .8);
+        }
+
+        .checkbox input {
+            position: relative !important;
+        }
+
+        footer {
+            color: rgb(102, 102, 102);
+            text-align: center;
+
+        }
+        .main p a:hover{
+            text-decoration: none;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+<div class="background">
+    <section class="main col-md-6 col-md-offset-3">
+        <h1> 逼乎</h1>
+        <p>第三方登陆</p>
+        <p>已有账号?<a href="#">点此绑定</a></p>
+        <form role="form" method="post" action="{{ url_for('do_register') }}">
+            <div class="form-group">
+                <label for="exampleInputUsername">User name</label>
+                <input type="text" class="form-control" id="exampleInputUsername"
+                       placeholder="User name" name="username">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1"
+                       placeholder="Enter email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1"
+                       placeholder="Password" name="password">
+            </div>
+            <!--<div class="form-group">-->
+            <!--<label for="exampleInputFile">File input</label>-->
+            <!--<input type="file" id="exampleInputFile">-->
+            <!--<p class="help-block">Example blaock-level help text here.</p>-->
+            <!--</div>-->
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox">我同意 <strong><a href="#">用户协议</a></strong>
+                </label>
+            </div>
+            <button type="submit" class="btn "><a href="#"></a>确认注册</button>
+        </form>
+          {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+    </section>
+    <footer>
+        <i>
+            @2016逼乎<br>Powered By WeCenter<br>
+            站长统计-当前在线[19]
+        </i>
+    </footer>
+</div>
+</body>
+</html>
