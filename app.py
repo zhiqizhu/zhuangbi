@@ -4,8 +4,8 @@ import sys
 
 from flask import Flask, request, g, render_template
 
-from model import models
-from repository import user_repository
+from service.model import models
+from service.repository import user_repository
 
 app = Flask(__name__)
 
@@ -58,7 +58,7 @@ def login():
 if __name__ == '__main__':
     # Load default config
     app.config.update(dict(
-        DATABASE=os.path.join(app.root_path, 'db/zhuangbi.db'),
+        DATABASE=os.path.join(app.root_path, 'service/zhuangbi.db'),
         SECRET_KEY='development key',
         USERNAME='admin',
         PASSWORD='default'

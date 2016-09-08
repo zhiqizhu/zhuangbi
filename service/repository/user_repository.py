@@ -1,6 +1,5 @@
-import dbaccess
-from model.models import User
-
+from service.model.models import User
+from service import dbaccess
 
 def save_user(user):
     return dbaccess.insert("insert into t_user(user_name, mail, pass_word) values (?,?,?)", user.username, user.email,
@@ -19,7 +18,7 @@ def find_by_dict(dict):
     values = []
     is_first_round = True
     for key, value in dict.iteritems():
-        if (is_first_round):
+        if is_first_round:
             sql += "%s=? " % key
         else:
             sql += "and %s=? " % key

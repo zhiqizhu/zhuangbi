@@ -24,11 +24,10 @@ def get_db():
 
 
 def connect_db():
-    # with current_app.app_context():
-    #     return sqlite3.connect(current_app.config['DATABASE'])
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-
-    return sqlite3.connect(os.path.join(dir_path, 'zhuangbi.db'))
+    with current_app.app_context():
+        return sqlite3.connect(current_app.config['DATABASE'])
+    # dir_path = os.path.dirname(os.path.realpath(__file__))
+    # return sqlite3.connect(os.path.join(dir_path, 'zhuangbi.db'))
 
 
 def init_db():
