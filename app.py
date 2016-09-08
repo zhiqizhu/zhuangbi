@@ -68,7 +68,7 @@ if __name__ == '__main__':
     app.config.from_envvar('FLASKR_SETTINGS', silent=True)
     # Heroku dynamically assigns app a port
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True, port=port)
 
 
 @app.teardown_appcontext
