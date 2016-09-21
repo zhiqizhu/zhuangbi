@@ -2,12 +2,16 @@
 import os
 import sys
 
-from flask import Flask, request, g, render_template
+from flask import Flask, request, g, render_template, flash, jsonify
 
 from service.model import models
 from service.repository import user_repository
 
+import flask_login
+
 app = Flask(__name__)
+login_manager = flask_login.LoginManager()
+login_manager.init_app(app)
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -16,7 +20,34 @@ print "encoding set"
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return render_template('test.html')
+
+
+@app.route('/auto_complete')
+def auto_complete():
+    searchword = request.args.get('searchword', '')
+    return jsonify({'hint': searchword + random_str(5)})
+
+
+@app.route('/validate')
+def validate():
+    phoneNo = request.args.get('phoneNo', '')
+    if (phoneNo == '15881087265'):
+        return jsonify({'code': 'OK'})
+    return jsonify({'code': 'FAIL'})
+
+
+from random import Random
+
+
+def random_str(randomlength=8):
+    str = ''
+    chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789'
+    length = len(chars) - 1
+    random = Random()
+    for i in range(randomlength):
+        str += chars[random.randint(0, length)]
+    return str
 
 
 def initdb_command():
@@ -50,9 +81,23 @@ def to_register():
     return render_template('register.html')
 
 
-@app.route('/login')
+@app.route('/login', methods=['POST'])
 def login():
-    return render_template('login.html')
+    username = request.form.get('username', None)
+    password = request.form.get('password', None)
+    mail = request.form.get('email', None)
+    user = models.User(username=username, password=password, email=mail)
+    flask_login.login_user(user)
+    flash('Logged in successfully.')
+    return render_template('index.html')
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    users = user_repository.find_by_dict({"id": user_id})
+    if users:
+        return users[0]
+    return None
 
 
 if __name__ == '__main__':
@@ -68,6 +113,7 @@ if __name__ == '__main__':
     app.config.from_envvar('FLASKR_SETTINGS', silent=True)
     # Heroku dynamically assigns app a port
     port = int(os.environ.get('PORT', 5000))
+
     app.run(host='0.0.0.0', debug=True, port=port)
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>逼乎首页</title>
-    <link href="css/body.css" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static',filename = 'css/body.css')}}" rel="stylesheet" type="text/css">
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 
@@ -80,7 +80,7 @@
                 <button class="btn dropdown-toggle dropdown-button" type="button" id="dropdownMenu1"
                         data-toggle="dropdown">
                     <div class="profile">
-                        <img src="img/1.jpeg">
+                        <img src="{{url_for('static',filename='img/1.jpeg')}}">
                     </div>
                     <span class="caret"></span>
                 </button>
@@ -141,7 +141,7 @@
 
                     </div>
                     <div class="ul-img">
-                        <img src="img/2.jpeg">
+                        <img src="{{url_for('static',filename='img/2.jpeg')}}">
                     </div>
                 </li>
             </ul>
@@ -158,7 +158,7 @@
 
                     </div>
                     <div class="ul-img">
-                        <img src="img/4.jpeg">
+                        <img src="{{url_for('static',filename='img/4.jpeg')}}">
                     </div>
                 </li>
             </ul>
