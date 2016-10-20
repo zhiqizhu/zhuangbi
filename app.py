@@ -20,7 +20,7 @@ print "encoding set"
 
 @app.route('/')
 def hello_world():
-    return render_template('test.html')
+    return render_template('index.html')
 
 
 @app.route('/auto_complete')

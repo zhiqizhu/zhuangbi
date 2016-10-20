@@ -1,6 +1,7 @@
 Flask==0.11
-Jinja2==2.6
-Werkzeug==0.8.3
+Jinja2==2.8
+Werkzeug==0.11.11
 certifi==0.0.8
 chardet==1.0.1
 requests==0.11.1
+flask-login==0.3.2
