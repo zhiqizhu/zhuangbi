@@ -2,7 +2,7 @@
 import os
 import sys
 
-from flask import Flask, request, g, render_template, flash, jsonify
+from flask import Flask, request, g, render_template, flash, jsonify, session
 
 from service.model import models
 from service.repository import user_repository
@@ -85,11 +85,28 @@ def to_register():
 def login():
     username = request.form.get('username', None)
     password = request.form.get('password', None)
-    mail = request.form.get('email', None)
-    user = models.User(username=username, password=password, email=mail)
-    flask_login.login_user(user)
-    flash('Logged in successfully.')
-    return render_template('index.html')
+    # mail = request.form.get('email', None)
+    # user = models.User(username=username, password=password, email=mail)
+    # if flask_login.login_user(user):
+    user = user_repository.find_by_dict({"user_name": username, "pass_word": password})
+    if user:
+        session['login_user'] = user
+        flash('Logged in successfully.')
+        return jsonify({'code': 'OK'})
+    else:
+        return jsonify({'code': 'FAIL'})
+
+
+@app.route('/login', methods=['GET'])
+def login_page():
+    return render_template('login.html')
+
+@app.route('/api', methods=['GET'])
+def test_api():
+    login_user = session.get('login_user', None)
+    if not login_user:
+        return jsonify({'code': 403})
+    return "success"
 
 
 @login_manager.user_loader

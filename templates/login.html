@@ -4,17 +4,37 @@
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
+<script src="/static/js/jquery.min.js"></script>
 <body>
- <h2>Login</h2>
-  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
-  <form action="{{ url_for('login') }}" method='post'>
+<h2>Login</h2>
+<form method='post'>
     <dl>
-      <dt>Username:
-      <dd><input type=text name=username>
-      <dt>Password:
-      <dd><input type=password name=password>
-      <dd><input type=submit value=Login>
+        <dt>Username:
+        <dd><input type=text name="username"/></dd>
+        <dt>Password:
+        <dd><input type=password name="password"/></dd>
+        <dd><input type=submit value=Login onclick="return login();"/></dd>
     </dl>
-  </form>
+</form>
+<a href="/register">点我注册！</a>
 </body>
+<script type="text/javascript">
+    function login() {
+        var username = $("username");
+        var password = $("password");
+        $.ajax({
+            url: "/login",
+            method: "POST",
+            data: $('form').serialize(),
+            success: function (data) {
+                if (data.code == 'OK') {
+                    alert("登陆成功！");
+                } else {
+                    alert("用户名或密码错误！");
+                }
+            }
+        });
+        return false;
+    }
+</script>
 </html>

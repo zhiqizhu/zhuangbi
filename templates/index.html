@@ -415,7 +415,16 @@
         </footer>
 
     </section>
-
+<script>
+    $(function () {
+        $.get("/api", function (data) {
+            if(data.code==403) {
+                alert("无权访问，请先登录");
+                location.href = "/login"
+            }
+        });
+    });
+</script>
 </div>
 </body>
 </html>
