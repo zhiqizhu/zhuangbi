@@ -1,4 +1,4 @@
-# encoding=utf-8
+# coding=utf-8
 import os
 import sys
 
@@ -7,11 +7,11 @@ from flask import Flask, request, g, render_template, flash, jsonify, session
 from service.model import models
 from service.repository import user_repository
 
-# import flask_login
+import flask_login
 
 app = Flask(__name__)
-# login_manager = flask_login.LoginManager()
-# login_manager.init_app(app)
+login_manager = flask_login.LoginManager()
+login_manager.init_app(app)
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -101,7 +101,6 @@ def login():
 def login_page():
     return render_template('login.html')
 
-
 @app.route('/api', methods=['GET'])
 def test_api():
     login_user = session.get('login_user', None)
@@ -110,12 +109,7 @@ def test_api():
     return "success"
 
 
-@app.route('/heat_map', methods=['GET'])
-def heat_map():
-    return render_template('heat_map_example.html')
-
-
-# @login_manager.user_loader
+@login_manager.user_loader
 def load_user(user_id):
     users = user_repository.find_by_dict({"id": user_id})
     if users:
@@ -146,6 +140,4 @@ def close_db(error):
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
 
-
-
-print "fdsafds"
+print "change something"
