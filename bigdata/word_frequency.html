@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>word cloud</title>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/wordcloud2.js"></script>
+</head>
+<body>
+<a class="btn" id="btn-save" title="Save canvas">Save Image</a>
+<canvas id="my_canvas" class="canvas" width="2340" height="1520" style="width: 1170px; height: 760px;"></canvas>
+
+</body>
+<script>
+    $(function () {
+        $('#btn-save').on('click', function save(evt) {
+            var url = $('#my_canvas')[0].toDataURL();
+            if ('download' in document.createElement('a')) {
+                this.href = url;
+            } else {
+                evt.preventDefault();
+                alert('Please right click and choose "Save As..." to save the generated image.');
+                window.open(url, '_blank', 'width=500,height=300,menubar=yes');
+            }
+        });
+        $.get('heat_map.json', function (data) {
+            WordCloud(document.getElementById('my_canvas'), {list: data});
+        });
+    });
+</script>
+</html>

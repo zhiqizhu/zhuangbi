@@ -1,0 +1,30 @@
+{
+  "status": "1",
+  "count": "1",
+  "info": "OK",
+  "infocode": "10000",
+  "suggestion": {
+    "keywords": [],
+    "cities": []
+  },
+  "pois": [
+    {
+      "id": "B0FFGXGXJ9",
+      "name": "新津县烽火社区",
+      "type": "商务住宅;住宅区;住宅小区",
+      "typecode": "120302",
+      "biz_type": [],
+      "address": [],
+      "location": "103.786953,30.352492",
+      "tel": [],
+      "distance": "5245",
+      "biz_ext": [],
+      "pname": "四川省",
+      "cityname": "成都市",
+      "adname": "新津县",
+      "importance": [],
+      "shopid": [],
+      "poiweight": []
+    }
+  ]
+}
