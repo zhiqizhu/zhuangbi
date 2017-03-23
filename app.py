@@ -141,3 +141,5 @@ def close_db(error):
         g.sqlite_db.close()
 
 print "change something"
+
+print "fdsafdsfdsafdsa"
