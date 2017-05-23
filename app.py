@@ -8,6 +8,7 @@ from service.model import models
 from service.repository import user_repository
 
 import flask_login
+from service.util import cors_util
 
 app = Flask(__name__)
 login_manager = flask_login.LoginManager()
@@ -101,12 +102,26 @@ def login():
 def login_page():
     return render_template('login.html')
 
-@app.route('/api', methods=['GET'])
-def test_api():
-    login_user = session.get('login_user', None)
-    if not login_user:
-        return jsonify({'code': 403})
-    return "success"
+
+@app.route('/api/register', methods=['POST'])
+@cors_util.crossdomain(origin='*')
+def register_api():
+    username = request.form.get('username', None)
+    password = request.form.get('password', None)
+    mail = request.form.get('email', None)
+    if not username:
+        return jsonify({'code': 'FAIL', 'message': '用户名为空'})
+    if not password:
+        return jsonify({'code': 'FAIL', 'message': '密码为空'})
+    if not mail:
+        return jsonify({'code': 'FAIL', 'message': '邮箱为空'})
+    existed = user_repository.find_by_email(mail)
+    if existed:
+        return jsonify({'code': 'FAIL', 'message': '用户邮箱已经被注册'})
+    else:
+        user = models.User(username=username, password=password, email=mail)
+        user_repository.save_user(user)
+        return jsonify({'code': 'SUCCESS'})
 
 
 @login_manager.user_loader
@@ -131,7 +146,7 @@ if __name__ == '__main__':
     # Heroku dynamically assigns app a port
     port = int(os.environ.get('PORT', 5000))
 
-    app.run(host='0.0.0.0', debug=True, port=port)
+    app.run(host='127.0.0.1', debug=True, port=port)
 
 
 @app.teardown_appcontext
@@ -139,7 +154,3 @@ def close_db(error):
     """Closes the database again at the end of the request."""
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
-
-print "change something"
-
-print "fdsafdsfdsafdsa"

@@ -54,7 +54,7 @@
           <input type="checkbox" value="我同意"><span>我同意 </span><strong><a href="#">用户协议</a></strong>
         </label>
       </div>
-      <button type="" class="btn">确认注册</button>
+      <button type="button" class="btn">确认注册</button>
       <!--<div class="btn2">点击</div>-->
 
     </form>
@@ -73,11 +73,17 @@
       var Password1 = $('#Password1');
       var Password2 = $('#Password2');
       $.ajax({
-        url: 'host_api_',// this is server address
+        url: 'http://127.0.0.1:5000/api/register',// this is server address
         type: 'post',
         timeout: 1000,
         dataType: 'json',
-        success : function () {
+        success : function (data) {
+            console.log(data);
+            if(data.code=='SUCCESS'){
+                alert("注册成功");
+            }else {
+                alert(data.message);
+            }
           if (userName == null) {
             $('.attention').css('display', 'block');
           }
