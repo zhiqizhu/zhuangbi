@@ -74,10 +74,12 @@ input[type='checkbox'] {
   width: 400px;
   height: 40px;
   border-radius: 5px;
-  background-color: azure;
   margin: 30px auto;
   display: flex;
   font-size: 15px;
-  color: cadetblue;
+  background-color: rgba(225,225,225,.6);
   justify-content: center;
+}
+.btn:hover{
+    opacity: .4;
 }

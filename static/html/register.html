@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>逼乎注册</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href='../css/register.css'>
+</head>
+<body>
+<section class="body_container">
+    <section class="main">
+        <h1> 逼乎</h1>
+        <p>注册</p>
+        <p>已有账号?<a href="#">点此绑定</a></p>
+        <form role="form" method="post" action="" id="form">
+            <div class="form-group">
+                <label for="exampleInputUsername">User name</label>
+                <input type="text" class="form-control" id="exampleInputUsername"
+                       placeholder="User name" name="username" required>
+                <span class="attention">x 用户名不合法</span>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1"
+                       placeholder="Enter email" name="email" required>
+                <span class="attention">x 邮箱不正确</span>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1"
+                       placeholder="Password" name="password" required minlength="6">
+                <span class="attention">x 密码不正确</span>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">comfirm password</label>
+                <input type="password" class="form-control" id="exampleInputPassword2"
+                       placeholder="Password" name="password" required minlength="6">
+                <span class="attention">x 密码不正确</span>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="我同意" required><span>我同意 </span><strong><a href="#">用户协议</a></strong>
+                </label>
+            </div>
+            <button type="button" class="btn">确认注册</button>
+
+        </form>
+    </section>
+    <footer>
+        <i>
+            @2016逼乎<br>Powered By WeCenter<br>
+            站长统计-当前在线[19]
+        </i>
+    </footer>
+</section>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/register.js"></script>
+
+</html>

@@ -1,0 +1,46 @@
+
+a {
+    text-decoration: none;
+}
+
+header {
+    padding: 0 20px;
+    width: 100%;
+    height: 100px;
+    display: block;
+    /*position: fixed;*/
+    /*top:0;*/
+    /*left: 0;*/
+}
+
+.logo {
+    color: #ed745d;
+    font-size: 30px;
+    line-height: 2;
+}
+
+input[type=text] {
+    height: 30px;
+    background-color: rgba(225, 225, 225, .4);
+    border-radius: 50px;
+    padding-left: 20px;
+    font-size: 15px;
+    width: 130px;
+}
+.user{
+    height: 100%;
+    display: inline-block;
+}
+.avatar{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.avatar img{
+    /*width: 100px;*/
+
+}
+.dropdown-menu{
+    display: none;
+}
+
