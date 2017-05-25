@@ -1,58 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>逼乎首页</title>
-    <link rel="stylesheet" href="../css/index.css">
+  <meta charset="UTF-8">
+  <title>逼乎首页</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/swiper-3.4.2.min.css">
 </head>
+<style>
+  .user_name {
+    margin: 0 10px;
+  }
+
+  time {
+    color: #ccc;
+  }
+
+  .title {
+    font-size: 20px;
+    margin: 20px 0;
+  }
+
+  .content_main p {
+    font-size: 13px;
+    line-height: 2;
+  }
+
+  .content_item {
+    list-style: none;
+    padding: 0 20px;
+  }
+
+  .content_pic {
+    margin-left: 20px;
+  }
+
+  .content_pic img {
+    width: 125px;
+    height: 100px;
+    border-radius: 5%;
+  }
+
+  .content_main {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .comment{
+    color: #ccc;
+  }
+  .comment span{
+    padding: 0 10px;
+  }
+  .button-center{
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .learnmore{
+    width: 300px;
+    height: 40px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    background-color: #ccc;
+  }
+</style>
 <body>
-<div class="body">
-    <header class="header">
-        <a href="#" class="logo">
-            <span>逼乎</span>
-        </a>
-        <input class="search" type='text' placeholder="搜索">
-        <div class="user">
-            <a class="avatar">
-                <div class="user_info" data-hover="dropdrown">
-                    <img src="../img/7.jpeg" alt="avatar">
-                </div>
-            </a>
-            <ul class="dropdown-menu">
-                <li> 我的文章</li>
-                <li> 我的主页</li>
-            </ul>
+<header class="header_flxed">
+  <nav class="nav">
+    <a href="#" class="logo">
+      <span>逼乎</span>
+    </a>
+    <input class="search" type='text' placeholder="搜索">
+    <div class="user">
+      <a class="user_info">
+        <div class="avatar" data-hover="dropdrown">
+          <img src="../img/2.jpeg" alt="avatar">
         </div>
-        <button>写文章</button>
+      </a>
+      <button class="write">写文章</button>
+    </div>
+    <ul class="dropdown-menu">
+      <li> 我的文章</li>
+      <li> 我的主页</li>
+    </ul>
+  </nav>
+</header>
+<div class="wrapper">
+  <section class="bannar">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <img class="swiper-slide"
+             src="//upload.jianshu.io/admin_banners/web_images/3052/85b826f83eebc8051ad35b06b74f3e71d0f31060.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540">
+        <img class="swiper-slide"
+             src="//upload.jianshu.io/admin_banners/web_images/3053/73bbf53322c5f36f22e35ba3cdcf732c2fd5e479.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540">
+        <img class="swiper-slide"
+             src="//upload.jianshu.io/admin_banners/web_images/3061/23e61e3a68d006f9cf083760ade3ef9b86018a8c.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540">
 
-    </header>
+      </div>
+      <!-- 如果需要分页器 -->
+      <div class="swiper-pagination"></div>
 
+      <!-- 如果需要导航按钮 -->
+      <!--<div class="swiper-button-prev swiper-button"></div>-->
+      <!--<div class="swiper-button-next swiper-button"></div>-->
 
-    <section class="section">
-        <div class="right">
-            <ul class="firstUl">
-                <li>
-                    <div class="haveing-img">
-                        <a href="#">酷酷的梦女神</a>
-                        <time>大约13个小时之前</time>
-                        <h4>亲爱的,你过的好吗?</h4>
-                        <span>·评论</span><span>367</span>
-                        <span>·喜欢</span><span>532</span>
-
-                    </div>
-                    <div class="ul-img">
-                        <img src="img/11.jpeg">
-                    </div>
-                </li>
-            </ul>
-
-            <div class="button-center">
-                <button class="learnmore">点击查看更多</button>
+      <!-- 如果需要滚动条 -->
+      <!--<div class="swiper-scrollbar"></div>-->
+    </div>
+  </section>
+  <section class="content">
+    <ul class="content_container">
+      <li class="content_item">
+        <div class="avatar">
+          <img src="../img/1.jpeg" alt="">
+        </div>
+        <a href="#" class="user_name">酷酷的梦女神</a>
+        <time>13小时前</time>
+        <div>
+          <p class="title"><a href="#">亲爱的,你过的好吗?</a></p>
+          <div class="content_main">
+            <p>
+              浏览公众号时，我被咪蒙前天的推文《你有没有想过，你会平庸到死》触动了，不是因为奖金，而是我确实想过，可能有一天，我会平庸到死。 平庸，到死。 我学的文学，在读研之前，体...
+            </p>
+            <div class="content_pic">
+              <img src="../img/11.jpeg">
             </div>
+          </div>
+          <div class="comment">
+            <span>评论 (367)</span>
+            <span>喜欢(532)</span>
+          </div>
         </div>
+      </li>
+      <li class="content_item">
+        <div class="avatar">
+          <img src="../img/1.jpeg" alt="">
+        </div>
+        <a href="#" class="user_name">酷酷的梦女神</a>
+        <time>13小时前</time>
+        <div>
+          <p class="title"><a href="#">亲爱的,你过的好吗?</a></p>
+          <div class="content_main">
+            <p>
+              浏览公众号时，我被咪蒙前天的推文《你有没有想过，你会平庸到死》触动了，不是因为奖金，而是我确实想过，可能有一天，我会平庸到死。 平庸，到死。 我学的文学，在读研之前，体...
+            </p>
+            <div class="content_pic">
+              <img src="../img/11.jpeg">
+            </div>
+          </div>
+          <div class="comment">
+            <span>评论 (367)</span>
+            <span>喜欢(532)</span>
+          </div>
+        </div>
+      </li>
+    </ul>
 
-    </section>
+    <div class="button-center">
+      <button class="learnmore">阅读更多</button>
+    </div>
+
+  </section>
 </div>
 </body>
-<script src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/swiper-3.4.2.jquery.min.js"></script>
+<script type="text/javascript">
+
+  $('.avatar').mouseover(function () {
+    $('.dropdown-menu').addClass('open');
+  })
+  $('.avatar').mouseout(function () {
+    $('.dropdown-menu').removeClass('open');
+  })
+
+  var mySwiper = new Swiper('.swiper-container', {
+    direction: 'vertical',
+    loop: true,
+    autoplay: 5000,
+
+    // 如果需要分页器
+    pagination: '.swiper-pagination',
+
+    // 如果需要前进后退按钮
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
+
+    // 如果需要滚动条
+//    scrollbar: '.swiper-scrollbar',
+  })
+</script>
 </html>
