@@ -1,0 +1,59 @@
+body{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.left{
+  width: 20%;
+  float: left;
+  height: 100%;
+  position: absolute;
+  background-color: #3f3f3f;
+  display: flex;
+  justify-content: center;
+}
+.left .back{
+  width: 70%;
+  height: 40px;
+  margin: 60px auto;
+  background-color: #3f3f3f;
+  border: 1px solid rgba(236,114,89,0.7);
+  text-align: center;
+  border-radius: 5px;
+  font-size: 15px;
+  outline: none;
+}
+.left .back:hover{
+  border-color: #ec7259;
+  transition: 0.1s ease-in;
+  -webkit-transition: 0.1s ease;
+}
+.back a{
+  color: #ec7259;
+}
+.right{
+  float: right;
+  width: 80%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+}
+.title{
+  height: 50px;
+  width: 100%;
+  padding-left: 15px;
+  font-size: 15px;
+  line-height: 2;
+
+}
+.simditor{
+  height: 100%;
+  display: block;
+  border: none;
+}
+.simditor-placeholder{
+  top: 50px;
+}
+.left .select{
+
+}

@@ -1,0 +1,115 @@
+.page_single{
+  height: 100%;
+  width: 620px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.page_single .article{
+  margin-top: 60px;
+  padding-top: 20px;
+
+}
+.article .title{
+  font-size: 30px;
+  text-align: center;
+  word-break: break-all;
+}
+.author{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.author_info{
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+.user_comment{
+  color: #ccc;
+  margin-top: 10px;
+  font-size: 13px;
+}
+.page_single .content_img{
+  width: 100%;
+}
+.page_single .content p{
+  margin-top: 20px;
+  font-size: 15px;
+}
+.btn_pay {
+  width: 150px;
+  height: 40px;
+  font-size: 15px;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  background-color: #ed745d;
+  outline: none;
+  border: none;
+  margin: 40px auto;
+  display: block;
+}
+.btn_pay a{
+  color: white;
+}
+.new_comments{
+  width: 100%;
+  overflow: hidden;
+}
+.new_comments form{
+  width: 100%;
+  overflow: hidden;
+}
+.new_comments textarea{
+  width: 550px;
+  margin-left: 18px;
+  height: 80px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  background-color: hsla(0,0%,71%,.1);
+  float: left;
+  resize: none;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 13px;
+  outline: none;
+}
+.comment{
+  width: 100%;
+  margin: 20px auto;
+  overflow: hidden;
+}
+.comment_info{
+  width: 100%;
+  height: 20px;
+}
+.comment_total{
+  font-size: 17px;
+  color: black;
+  float: left;
+}
+.comment_ranking{
+  display: inline-block;
+  float: right;
+  font-size: 13px;
+}
+.active{
+  color: #000;
+}
+.comment .user_time{
+  font-size: 13px;
+  padding: 0;
+}
+.comment_content{
+  color: #000000;
+  font-size: 15px;
+  line-height: 2;
+  padding: 20px 0;
+}
+.comment_item{
+  margin: 20px auto;
+  padding: 20px 0;
+  border-top: 1px solid #ccc;
+}
+.comment_content+div{
+  padding-bottom: 20px;
+}

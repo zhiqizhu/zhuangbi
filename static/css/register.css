@@ -19,25 +19,7 @@
   align-items: center;
 }
 
-footer {
-  margin-top: 100px;
-}
 
-h1, p, form {
-  line-height: 2;
-}
-
-h1 {
-  font-size: 27px;
-}
-
-p {
-  font-size: 20px;
-}
-
-form {
-  width: 400px;
-}
 
 .form-group {
   line-height: 2;

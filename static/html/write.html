@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link media="all" rel="stylesheet" type="text/css" href="../css/simditor.css">
+  <link media="all" rel="stylesheet" type="text/css" href="../css/common.css">
+  <link media="all" rel="stylesheet" type="text/css" href="../css/write.css">
+</head>
+
+<body>
+<section class="left">
+  <button class="back"><a href="index.html">回首页</a></button>
+</section>
+<section class="right">
+  <input class="title focus" placeholder="这里输入题目" focus>
+  <textarea id="editor" placeholder="hah" autofocus></textarea>
+  <input type="hidden" name="key" value="val"/>
+
+</section>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/module.min.js"></script>
+<script src="../js/hotkeys.min.js"></script>
+<script src="../js/simditor.min.js"></script>
+<script src="../js/uploader.min.js"></script>
+<script>
+  var editor = new Simditor({
+    textarea: $('#editor'),
+    placeholder: '随便写会让你灵感迸发哦~',
+    params: {},
+    upload: {
+      url: '',
+      params: null,
+      fileKey: 'upload_file',
+      connectionCount: 3,
+      leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
+    },
+    tabIndent: true,
+    toolbar: [
+      'title',
+      'bold',
+      'italic',
+      'underline',
+      'strikethrough',
+      'fontScale',
+      'color',
+      'ol',
+      'ul',
+      'blockquote',
+      'code',
+      'table',
+      'link',
+      'image',
+      'hr',
+      'indent',
+      'outdent',
+      'alignment'
+    ],
+    allowedTags: ['br', 'span', 'a', 'img', 'b', 'strong', 'i', 'strike', 'u', 'font', 'p', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'h1', 'h2', 'h3', 'h4', 'hr'],
+    toolbarFloat: true,
+    toolbarFloatOffset: 0,
+    toolbarHidden: false,
+    pasteImage: false,
+    cleanPaste: false
+  });
+
+
+</script>
+
+</html>
