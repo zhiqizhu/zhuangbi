@@ -6,6 +6,7 @@ from flask import Flask, request, g, render_template, flash, jsonify, session
 
 from service.model import models
 from service.repository import user_repository
+from service.repository import post_repository
 
 import flask_login
 from service.util import cors_util
@@ -57,32 +58,8 @@ def initdb_command():
     print 'Initialized the database.'
 
 
-@app.route('/register', methods=['POST'])
-def do_register():
-    error = None
-    username = request.form.get('username', None)
-    password = request.form.get('password', None)
-    mail = request.form.get('email', None)
-    if (not username) or (not password) or (not mail):
-        error = "请正确输入表单!"
-        return render_template('register.html', error=error)
-    else:
-        existed = user_repository.find_by_email(mail)
-        if existed:
-            error = "用户邮箱已经被注册"
-            return render_template('register.html', error=error)
-        else:
-            user = models.User(username=username, password=password, email=mail)
-            user_repository.save_user(user)
-            return 'register success!'
-
-
-@app.route('/register', methods=['GET'])
-def to_register():
-    return render_template('register.html')
-
-
-@app.route('/login', methods=['POST'])
+@app.route('/api/login', methods=['POST'])
+@cors_util.crossdomain(origin='*')
 def login():
     username = request.form.get('username', None)
     password = request.form.get('password', None)
@@ -96,11 +73,6 @@ def login():
         return jsonify({'code': 'OK'})
     else:
         return jsonify({'code': 'FAIL'})
-
-
-@app.route('/login', methods=['GET'])
-def login_page():
-    return render_template('login.html')
 
 
 @app.route('/api/register', methods=['POST'])
@@ -122,6 +94,27 @@ def register_api():
         user = models.User(username=username, password=password, email=mail)
         user_repository.save_user(user)
         return jsonify({'code': 'SUCCESS'})
+
+
+@app.route('/api/post', methods=['POST'])
+@cors_util.crossdomain(origin='*')
+def save_post():
+    title = request.form.get('title', None)
+    content = request.form.get('content', None)
+    user = None
+    if 'login_user' in session:
+        user = session['login_user']
+
+    if not title:
+        return jsonify({'code': 'FAIL', 'message': '标题为空'})
+    if not content:
+        return jsonify({'code': 'FAIL', 'message': '内容为空'})
+    if user:
+        post = models.Post(title=title, content=content, author_id=user.username)
+    else:
+        post = models.Post(title=title, content=content)
+    post_repository.save_post(post)
+    return jsonify({'code': 'SUCCESS'})
 
 
 @login_manager.user_loader
