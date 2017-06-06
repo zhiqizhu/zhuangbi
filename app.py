@@ -117,12 +117,15 @@ def save_post():
     return jsonify({'code': 'SUCCESS'})
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    users = user_repository.find_by_dict({"id": user_id})
-    if users:
-        return users[0]
-    return None
+@app.route('/api/post', methods=['GET'])
+@cors_util.crossdomain(origin='*')
+def list_post():
+    page = request.args.get('page')
+    size = request.args.get('size')
+    page = 1 if not page else int(page)
+    size = 10 if not size else int(size)
+    result = post_repository.post_list(page=page, size=size)
+    return jsonify(result)
 
 
 if __name__ == '__main__':
