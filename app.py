@@ -2,19 +2,16 @@
 import os
 import sys
 
+import jinja2
 from flask import Flask, request, g, render_template, flash, jsonify, session
 
 from service.model import models
 from service.repository import user_repository
 from service.repository import post_repository
 
-import flask_login
 from service.util import cors_util
 
-app = Flask(__name__)
-login_manager = flask_login.LoginManager()
-login_manager.init_app(app)
-
+app = Flask(__name__, template_folder='static/html', static_url_path='')
 reload(sys)
 sys.setdefaultencoding("utf-8")
 print "encoding set"
