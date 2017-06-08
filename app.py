@@ -141,6 +141,12 @@ def post_comment():
     comment_repository.save_comment(comment)
     return jsonify({'code': 'SUCCESS'})
 
+
+@app.route('/api/post/<int:post_id>', methods=['GET'])
+@cors_util.crossdomain(origin='*')
+def post_detail(post_id):
+    return jsonify(post_repository.post_detail(post_id))
+
 if __name__ == '__main__':
     # Load default config
     app.config.update(dict(
