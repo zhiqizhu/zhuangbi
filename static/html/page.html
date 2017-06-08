@@ -31,28 +31,27 @@
   </nav>
 </header>
 <div class="page_single">
-  <div class="article">
+  <div class="article" id="article">
     <!--title-->
-    <h1 class="title">世界是一样的，只是每个人的经历不一样</h1>
-    <!--作者信息-->
-    <div class="author">
-      <div class="avatar">
-        <img src="../img/1.jpeg" alt="">
+    <script type="text/x-handlebars-template" id="template">
+      <h1 class="title">{{title}}</h1>
+      <!--作者信息-->
+      <div class="author">
+        <div class="avatar">
+          <img src="../img/1.jpeg" alt="">
+        </div>
+        <div class="author_info">
+          <a href="#" class="user_name">酷酷的梦女神</a>
+          <a href="#" class="user_comment">评论 (<span>12</span>)</a>
+        </div>
       </div>
-      <div class="author_info">
-        <a href="#" class="user_name">酷酷的梦女神</a>
-        <a href="#" class="user_comment">评论 (<span>12</span>)</a>
+      <!--文章内容-->
+      <div class="content">
+        <img src="../img/3.jpeg" class="content_img">
+        <p>
+          {{{content}}}</p>
       </div>
-    </div>
-    <!--文章内容-->
-    <div class="content">
-      <img src="../img/3.jpeg" class="content_img">
-      <p>
-        这部灾难片兼爱情神话片一度让无数男女魂牵梦萦，风光发烧友们热衷于大西洋航程的无限美景，视听发烧友们迷恋于这艘巨轮从起航到沉没的空前场面如何让人惊心动魄，更多深具浪漫情怀的人，津津乐道的是男女主人公在影片中缠绵悱恻刻骨铭心的爱情。</p>
-      <p>
-        这部灾难片兼爱情神话片一度让无数男女魂牵梦萦，风光发烧友们热衷于大西洋航程的无限美景，视听发烧友们迷恋于这艘巨轮从起航到沉没的空前场面如何让人惊心动魄，更多深具浪漫情怀的人，津津乐道的是男女主人公在影片中缠绵悱恻刻骨铭心的爱情。</p>
-      <p>You jump ,I jump.——《泰坦尼克号》</p>
-    </div>
+    </script>
     <button class="btn_pay"><a href="#">赞赏和支持</a></button>
   </div>
   <div class="new_comments">
@@ -106,8 +105,21 @@
       </li>
     </ul>
   </div>
-
-
 </div>
 </body>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/handlebars-v4.0.10.js"></script>
+
+<script>
+  $.ajax({
+    url: "http://127.0.0.1:5000/api/post",
+    method: "get",
+    type: "json",
+    success: function (data) {
+      var template = Handlebars.compile($('#template').html());
+      console.log(data);
+      $('#article').html(template(data))
+    }
+  })
+</script>
 </html>

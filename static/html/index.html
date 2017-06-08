@@ -29,106 +29,84 @@
   </nav>
 </header>
 <div class="page_index">
-<div class="wrapper">
-  <section class="bannar">
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <img class="swiper-slide"
-             src="//upload.jianshu.io/admin_banners/web_images/3052/85b826f83eebc8051ad35b06b74f3e71d0f31060.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540">
-        <img class="swiper-slide"
-             src="//upload.jianshu.io/admin_banners/web_images/3053/73bbf53322c5f36f22e35ba3cdcf732c2fd5e479.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540">
-        <img class="swiper-slide"
-             src="//upload.jianshu.io/admin_banners/web_images/3061/23e61e3a68d006f9cf083760ade3ef9b86018a8c.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540">
+  <div class="wrapper">
+    <section class="bannar">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <img class="swiper-slide"
+               src="//upload.jianshu.io/admin_banners/web_images/3052/85b826f83eebc8051ad35b06b74f3e71d0f31060.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540">
+          <img class="swiper-slide"
+               src="//upload.jianshu.io/admin_banners/web_images/3053/73bbf53322c5f36f22e35ba3cdcf732c2fd5e479.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540">
+          <img class="swiper-slide"
+               src="//upload.jianshu.io/admin_banners/web_images/3053/73bbf53322c5f36f22e35ba3cdcf732c2fd5e479.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540">
 
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+
+        <!-- 如果需要导航按钮 -->
+        <!--<div class="swiper-button-prev swiper-button"></div>-->
+        <!--<div class="swiper-button-next swiper-button"></div>-->
+
+        <!-- 如果需要滚动条 -->
+        <!--<div class="swiper-scrollbar"></div>-->
       </div>
-      <!-- 如果需要分页器 -->
-      <div class="swiper-pagination"></div>
+    </section>
+    <section class="content">
 
-      <!-- 如果需要导航按钮 -->
-      <!--<div class="swiper-button-prev swiper-button"></div>-->
-      <!--<div class="swiper-button-next swiper-button"></div>-->
+      <ul class="content_container" id="content_container">
 
-      <!-- 如果需要滚动条 -->
-      <!--<div class="swiper-scrollbar"></div>-->
-    </div>
-  </section>
-  <section class="content">
-    <ul class="content_container">
-      <li class="content_item">
-        <div class="avatar">
-          <img src="../img/1.jpeg" alt="">
-        </div>
-        <a href="#" class="user_name">酷酷的梦女神</a>
-        <time>13小时前</time>
-        <a href="#">
-          <p class="title">亲爱的,你过的好吗?</p>
-          <div class="content_main">
-            <p>
-              对于生长，生活，工作，我们或多或少有着这样那样的困惑。
-              这些困惑，与其说是方法上的不得要领，不如说是我们思维上的闭塞。
-              拆掉思维的墙，就是拆掉我们旧的认知和心智模式。
-              一旦你能重新理解生命中的诸多概念，你就能自己找到方法去应对。
-              对于生长，生活，工作，我们或多或少有着这样那样的困惑。
-              这些困惑，与其说是方法上的不得要领，不如说是我们思维上的闭塞。
-              拆掉思维的墙，就是拆掉我们旧的认知和心智模式。
-              一旦你能重新理解生命中的诸多概念，你就能自己找到方法去应对。
-            </p>
-            <div class="content_pic">
-              <img src="../img/11.jpeg">
+        <script type="text/x-handlebars-template" id="template">
+          {{#each this}}
+          <li class="content_item">
+            <div class="avatar">
+              <img src="../img/1.jpeg" alt="">
             </div>
-          </div>
-          <div class="comment">
-            <span>评论 (367)</span>
-            <span>喜欢(532)</span>
-          </div>
-        </a>
-      </li>
-      <li class="content_item">
-        <div class="avatar">
-          <img src="../img/1.jpeg" alt="">
-        </div>
-        <a href="#" class="user_name">酷酷的梦女神</a>
-        <time>13小时前</time>
-        <a href="#">
-          <p class="title">亲爱的,你过的好吗?</p>
-          <div class="content_main">
-            <p>
-              对于生长，生活，工作，我们或多或少有着这样那样的困惑。
-              这些困惑，与其说是方法上的不得要领，不如说是我们思维上的闭塞。
-              拆掉思维的墙，就是拆掉我们旧的认知和心智模式。
-              一旦你能重新理解生命中的诸多概念，你就能自己找到方法去应对。
-            </p>
-            <div class="content_pic">
-              <img src="../img/11.jpeg">
-            </div>
-          </div>
-          <div class="comment">
-            <span>评论 (367)</span>
-            <span>喜欢(532)</span>
-          </div>
-        </a>
-      </li>
-    </ul>
+            <a href="#" class="user_name">酷酷的梦女神</a>
+            <time>13小时前</time>
+            <a href="#">
+              <p class="title">{{title}}</p>
+              <div class="content_main">
+                <p class="contents">
+                  {{{content}}}
+                </p>
+                <div class="content_pic">
+                  <img src="../img/11.jpeg">
+                </div>
+              </div>
+              <div class="comment">
+                <span>评论 (367)</span>
+                <span>喜欢(532)</span>
+              </div>
+            </a>
+          </li>
+          {{/each}}
+        </script>
+      </ul>
 
-    <div class="button-center">
-      <button class="learnmore">阅读更多</button>
-    </div>
+      <div class="button-center">
+        <button class="learnmore">阅读更多</button>
+      </div>
 
-  </section>
-</div>
+    </section>
+  </div>
 </div>
 </body>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/swiper-3.4.2.jquery.min.js"></script>
+<script type="text/javascript" src="../js/handlebars-v4.0.10.js"></script>
+
 <script type="text/javascript">
 
-  $('.avatar').mouseover(function () {
+  //mouseover 的效果
+  $('.user_info').mouseover(function () {
     $('.dropdown-menu').addClass('open');
   })
-  $('.avatar').mouseout(function () {
+  $('.user_info').mouseout(function () {
     $('.dropdown-menu').removeClass('open');
   })
 
+  //swiper 的效果
   var mySwiper = new Swiper('.swiper-container', {
     direction: 'vertical',
     loop: true,
@@ -139,10 +117,39 @@
 
     // 如果需要前进后退按钮
     nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev',
+    prevButton: '.swiper-button-prev'
 
     // 如果需要滚动条
 //    scrollbar: '.swiper-scrollbar',
   })
+
+  // 给列表绑定数据
+  $(document).ready(function () {
+    $.ajax({
+      url: "http://127.0.0.1:5000/api/post",
+      method: "get",
+      type: "json",
+      success: function (data) {
+        console.log(data.length);
+        // 这是用handlebar的方式
+        var template = Handlebars.compile($('#template').html());
+        $("#content_container").html(template(data));
+
+        //这是不用模板的方式
+
+//                for (var i = 0; i < data.length; i++) {
+//                    var li = $("#template").clone();
+//                    var title = li.find(".title");
+//                    var content = li.find(".contents");
+//                    title.text(data[i].title);
+//                    content.html(data[i].content);
+//                    li.removeAttr('id').appendTo(".content_container");
+//                }
+      }
+    })
+
+
+  })
+
 </script>
 </html>

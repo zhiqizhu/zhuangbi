@@ -17,7 +17,7 @@ login_manager.init_app(app)
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
-print "encoding set"
+print "encoding se"
 
 
 @app.route('/')

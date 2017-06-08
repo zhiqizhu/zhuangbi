@@ -152,6 +152,7 @@ time {
 }
 
 .content_main p {
+  width: 80%;
   font-size: 13px;
   line-height: 2;
   word-break:break-all;
@@ -183,6 +184,7 @@ time {
 .content_main {
   display: flex;
   flex-direction: row;
+      padding-left: 40px;
 }
 
 .comment{

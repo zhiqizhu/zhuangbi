@@ -1,24 +1,25 @@
 <!doctype html>
 <html class="no-js" lang="">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link media="all" rel="stylesheet" type="text/css" href="../css/simditor.css">
-  <link media="all" rel="stylesheet" type="text/css" href="../css/common.css">
-  <link media="all" rel="stylesheet" type="text/css" href="../css/write.css">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link media="all" rel="stylesheet" type="text/css" href="../css/simditor.css">
+    <link media="all" rel="stylesheet" type="text/css" href="../css/common.css">
+    <link media="all" rel="stylesheet" type="text/css" href="../css/write.css">
 </head>
 
 <body>
 <section class="left">
-  <button class="back"><a href="index.html">回首页</a></button>
+    <button class="back btn_left "><a href="index.html">回首页</a></button>
+    <button class="submit btn_left">提交</button>
 </section>
 <section class="right">
-  <input class="title focus" placeholder="这里输入题目" focus>
-  <textarea id="editor" placeholder="hah" autofocus></textarea>
-  <input type="hidden" name="key" value="val"/>
+    <input id="title" class="title focus" placeholder="这里输入题目" focus>
+    <textarea id="editor" placeholder="hah" autofocus></textarea>
+    <input type="hidden" name="key" value="val"/>
 
 </section>
 </body>
@@ -28,45 +29,72 @@
 <script src="../js/simditor.min.js"></script>
 <script src="../js/uploader.min.js"></script>
 <script>
-  var editor = new Simditor({
-    textarea: $('#editor'),
-    placeholder: '随便写会让你灵感迸发哦~',
-    params: {},
-    upload: {
-      url: '',
-      params: null,
-      fileKey: 'upload_file',
-      connectionCount: 3,
-      leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
-    },
-    tabIndent: true,
-    toolbar: [
-      'title',
-      'bold',
-      'italic',
-      'underline',
-      'strikethrough',
-      'fontScale',
-      'color',
-      'ol',
-      'ul',
-      'blockquote',
-      'code',
-      'table',
-      'link',
-      'image',
-      'hr',
-      'indent',
-      'outdent',
-      'alignment'
-    ],
-    allowedTags: ['br', 'span', 'a', 'img', 'b', 'strong', 'i', 'strike', 'u', 'font', 'p', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'h1', 'h2', 'h3', 'h4', 'hr'],
-    toolbarFloat: true,
-    toolbarFloatOffset: 0,
-    toolbarHidden: false,
-    pasteImage: false,
-    cleanPaste: false
-  });
+
+    var editor = new Simditor({
+        textarea: $('#editor'),
+        placeholder: '随便写会让你灵感迸发哦~',
+        params: {},
+        upload: {
+            url: '',
+            params: null,
+            fileKey: 'upload_file',
+            connectionCount: 3,
+            leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
+        },
+        tabIndent: true,
+        toolbar: [
+            'title',
+            'bold',
+            'italic',
+            'underline',
+            'strikethrough',
+            'fontScale',
+            'color',
+            'ol',
+            'ul',
+            'blockquote',
+            'code',
+            'table',
+            'link',
+            'image',
+            'hr',
+            'indent',
+            'outdent',
+            'alignment'
+        ],
+        allowedTags: ['br', 'span', 'a', 'img', 'b', 'strong', 'i', 'strike', 'u', 'font', 'p', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'h1', 'h2', 'h3', 'h4', 'hr'],
+        toolbarFloat: true,
+        toolbarFloatOffset: 0,
+        toolbarHidden: false,
+        pasteImage: false,
+        cleanPaste: false
+    });
+    $(document).ready(function () {
+        var submit = $('.submit');
+        submit.click(function () {
+            var title = $('#title').val();
+            var content = $("#editor").val();
+            console.log(title);
+            console.log(content);
+            if (title===""||content===""){
+                alert('请先输入内容')
+            }
+            $.ajax({
+                url: "http://127.0.0.1:5000/api/post",
+                method: "post",
+                type: "json",
+                data: $.param({
+                    title: title,
+                    content: content
+                }),
+                success:function () {
+                    window.location="index.html"
+                }
+            })
+
+
+        })
+    })
 
 
 </script>
