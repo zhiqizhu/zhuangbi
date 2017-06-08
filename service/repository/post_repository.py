@@ -11,3 +11,14 @@ def save_post(post):
 def post_list(page, size):
     sql = "SELECT * FROM t_post LIMIT %s, %s" % ((page - 1) * size, size)
     return dbaccess.query_for_map(sql)
+
+
+def post_detail(post_id):
+    sql = "SELECT * FROM t_post WHERE id = ?"
+    post = dbaccess.query_for_map(sql, post_id)
+    if not post: return post
+    sql = "SELECT * FROM t_comment WHERE post_id = ?"
+    comments = dbaccess.query_for_map(sql, post_id)
+    p = post[0]
+    p['comments'] = comments
+    return p

@@ -2,19 +2,18 @@
 import os
 import sys
 
+from datetime import datetime
+import jinja2
 from flask import Flask, request, g, render_template, flash, jsonify, session
 
 from service.model import models
 from service.repository import user_repository
 from service.repository import post_repository
+from service.repository import comment_repository
 
-import flask_login
 from service.util import cors_util
 
-app = Flask(__name__)
-login_manager = flask_login.LoginManager()
-login_manager.init_app(app)
-
+app = Flask(__name__, template_folder='static/html', static_url_path='')
 reload(sys)
 sys.setdefaultencoding("utf-8")
 print "encoding se"
@@ -127,6 +126,26 @@ def list_post():
     result = post_repository.post_list(page=page, size=size)
     return jsonify(result)
 
+
+@app.route('/api/comment', methods=['POST'])
+@cors_util.crossdomain(origin='*')
+def post_comment():
+    post_id = request.form.get('post_id', None)
+    body = request.form.get('body', None)
+    if not post_id or not body:
+        return jsonify({'code': 'FAIL', 'message': '参数不对'})
+    user = None
+    if 'login_user' in session:
+        user = session['login_user']
+    comment = models.Comment(body, user, int(post_id), datetime.now())
+    comment_repository.save_comment(comment)
+    return jsonify({'code': 'SUCCESS'})
+
+
+@app.route('/api/post/<int:post_id>', methods=['GET'])
+@cors_util.crossdomain(origin='*')
+def post_detail(post_id):
+    return jsonify(post_repository.post_detail(post_id))
 
 if __name__ == '__main__':
     # Load default config

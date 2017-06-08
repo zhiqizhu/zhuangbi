@@ -12,3 +12,11 @@ class Post:
         self.content = content
         self.created_at = created_at
         self.updated_at = updated_at
+
+
+class Comment:
+    def __init__(self, body, author, post_id,created_at):
+        self.body = body
+        self.author = author
+        self.post_id = post_id
+        self.created_at = created_at
