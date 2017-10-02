@@ -1,125 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>文章详情</title>
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/index.css">
-  <link rel="stylesheet" href="../css/page.css">
+    <meta charset="UTF-8">
+    <title>文章详情</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/page.css">
 
 </head>
 <body>
 
 <header class="header_flxed">
-  <nav class="nav">
-    <a href="#" class="logo">
-      <span>逼乎</span>
-    </a>
-    <input class="search" type='text' placeholder="搜索">
-    <div class="user">
-      <a class="user_info">
-        <div class="avatar" data-hover="dropdrown">
-          <img src="../img/2.jpeg" alt="avatar">
+    <nav class="nav">
+        <a href="#" class="logo">
+            <span>逼乎</span>
+        </a>
+        <input class="search" type='text' placeholder="搜索">
+        <div class="user">
+            <a class="user_info">
+                <div class="avatar" data-hover="dropdrown">
+                    <img src="../img/2.jpeg" alt="avatar">
+                </div>
+            </a>
+            <button class="write">写文章</button>
         </div>
-      </a>
-      <button class="write">写文章</button>
-    </div>
-    <ul class="dropdown-menu">
-      <li> 我的文章</li>
-      <li> 我的主页</li>
-    </ul>
-  </nav>
+        <ul class="dropdown-menu">
+            <li> 我的文章</li>
+            <li> 我的主页</li>
+        </ul>
+    </nav>
 </header>
 <div class="page_single">
-  <div class="article" id="article">
-    <!--title-->
-    <script type="text/x-handlebars-template" id="template">
-      <h1 class="title">{{title}}</h1>
-      <!--作者信息-->
-      <div class="author">
-        <div class="avatar">
-          <img src="../img/1.jpeg" alt="">
-        </div>
-        <div class="author_info">
-          <a href="#" class="user_name">酷酷的梦女神</a>
-          <a href="#" class="user_comment">评论 (<span>12</span>)</a>
-        </div>
-      </div>
-      <!--文章内容-->
-      <div class="content">
-        <img src="../img/3.jpeg" class="content_img">
-        <p>
-          {{{content}}}</p>
-      </div>
-    </script>
-    <button class="btn_pay"><a href="#">赞赏和支持</a></button>
-  </div>
-  <div class="new_comments">
-    <form action="" id="comment_form">
-      <div class="avatar">
-        <img src="../img/1.jpeg" alt="">
-      </div>
-      <textarea placeholder="写下你的评论..."></textarea>
-    </form>
-  </div>
-  <div class="comment">
-    <div class="comment_info">
-      <span class="comment_total">12条评论</span>
-      <div class="comment_ranking">
-        <span class="active">按时间正序</span>
-        <span>按时间倒序</span>
-      </div>
+    <div class="article" id="article">
+        <!--title-->
+        <script type="text/x-handlebars-template" id="template">
+            <h1 class="title">{{ title }}</h1>
+            <!--作者信息-->
+            <div class="author">
+                <div class="avatar">
+                    <img src="../img/1.jpeg" alt="">
+                </div>
+                <div class="author_info">
+                    <a href="#" class="user_name">酷酷的梦女神</a>
+                    <a href="#" class="user_comment">评论 (<span>12</span>)</a>
+                </div>
+            </div>
+            <!--文章内容-->
+            <div class="content">
+                <img src="../img/3.jpeg" class="content_img">
+                <p>
+                    {{{ content }}}</p>
+            </div>
+        </script>
+        <button class="btn_pay"><a href="#">赞赏和支持</a></button>
     </div>
-    <ul>
-      <li class="comment_item">
-        <div class="author">
-          <div class="avatar">
-            <img src="../img/1.jpeg" alt="">
-          </div>
-          <div class="author_info">
-            <a href="#" class="user_name">酷酷的梦女神</a>
-            <span class="user_time">2017.03.14</span>
-          </div>
+    <div class="new_comments">
+        <form action="" id="comment_form">
+            <div class="avatar">
+                <img src="../img/1.jpeg" alt="">
+            </div>
+            <textarea placeholder="写下你的评论..."></textarea>
+        </form>
+    </div>
+    <div class="comment">
+        <div class="comment_info">
+            <span class="comment_total">12条评论</span>
+            <div class="comment_ranking">
+                <span class="active">按时间正序</span>
+                <span>按时间倒序</span>
+            </div>
         </div>
-        <p class="comment_content">
-          对于生长，生活，工作，我们或多或少有着这样那样的困惑。
-          这些困惑，与其说是方法上的不得要领，不如说是我们思维上的闭塞。
-          拆掉思维的墙，就是拆掉我们旧的认知和心智模式。
-        </p>
-      </li>
-      <li class="comment_item">
-        <div class="author">
-          <div class="avatar">
-            <img src="../img/1.jpeg" alt="">
-          </div>
-          <div class="author_info">
-            <a href="#" class="user_name">酷酷的梦女神</a>
-            <span class="user_time">2017.03.14</span>
-          </div>
-        </div>
-        <p class="comment_content">
-          对于生长，生活，工作，我们或多或少有着这样那样的困惑。
-          这些困惑，与其说是方法上的不得要领，不如说是我们思维上的闭塞。
-          拆掉思维的墙，就是拆掉我们旧的认知和心智模式。
-        </p>
-      </li>
-    </ul>
-  </div>
+        <ul>
+            <li class="comment_item">
+                <div class="author">
+                    <div class="avatar">
+                        <img src="../img/1.jpeg" alt="">
+                    </div>
+                    <div class="author_info">
+                        <a href="#" class="user_name">酷酷的梦女神</a>
+                        <span class="user_time">2017.03.14</span>
+                    </div>
+                </div>
+                <p class="comment_content">
+                    对于生长，生活，工作，我们或多或少有着这样那样的困惑。
+                    这些困惑，与其说是方法上的不得要领，不如说是我们思维上的闭塞。
+                    拆掉思维的墙，就是拆掉我们旧的认知和心智模式。
+                </p>
+            </li>
+            <li class="comment_item">
+                <div class="author">
+                    <div class="avatar">
+                        <img src="../img/1.jpeg" alt="">
+                    </div>
+                    <div class="author_info">
+                        <a href="#" class="user_name">酷酷的梦女神</a>
+                        <span class="user_time">2017.03.14</span>
+                    </div>
+                </div>
+                <p class="comment_content">
+                    对于生长，生活，工作，我们或多或少有着这样那样的困惑。
+                    这些困惑，与其说是方法上的不得要领，不如说是我们思维上的闭塞。
+                    拆掉思维的墙，就是拆掉我们旧的认知和心智模式。
+                </p>
+            </li>
+        </ul>
+    </div>
 </div>
 </body>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/handlebars-v4.0.10.js"></script>
 
 <script>
-  $.ajax({
-    url: "http://127.0.0.1:5000/api/post",
-    method: "get",
-    type: "json",
-    success: function (data) {
-      var template = Handlebars.compile($('#template').html());
-      console.log(data);
-      $('#article').html(template(data))
-    }
-  })
+    $.ajax({
+        url: "http://127.0.0.1:5000/api/post/+'data[id]',
+        method: "get",
+        type: "json",
+        success: function (data) {
+            var template = Handlebars.compile($('#template').html());
+            console.log(data);
+            $('#article').html(template(data))
+        }
+    })
 </script>
 </html>
