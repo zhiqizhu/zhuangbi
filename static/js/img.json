@@ -1,9 +1,9 @@
 {
-  "data":[
-        "/img/19.jpeg",
-        "/img/20.jpeg",
-        "/img/9.jpeg",
-        "/img/8.jpeg",
-        "/img/13.jpeg"
-]
+  "data": [
+    "http://127.0.0.1:5000/img/19.jpeg",
+    "http://127.0.0.1:5000/img/20.jpeg",
+    "http://127.0.0.1:5000/img/9.jpeg",
+    "http://127.0.0.1:5000/img/8.jpeg",
+    "http://127.0.0.1:5000/img/13.jpeg"
+  ]
 }
