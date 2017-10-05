@@ -2,20 +2,25 @@
 import os
 import sys
 
-from datetime import datetime
-import jinja2
+import jinja2, time
 from flask import Flask, request, g, render_template, flash, jsonify, session, json
+from flask import url_for
 
 from service.model import models
 from service.repository import user_repository
 from service.repository import post_repository
 from service.repository import comment_repository
 from service.util import cors_util
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__, template_folder='static/html', static_url_path='')
 reload(sys)
 sys.setdefaultencoding("utf-8")
 print "encoding se"
+
+UPLOAD_FOLDER = os.path.join(app.root_path, "static/uploads")
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 @app.route('/')
@@ -111,8 +116,20 @@ def save_post():
         post = models.Post(title=title, content=content, author_id=user.username)
     else:
         post = models.Post(title=title, content=content)
+    print 'file' in request.files
+    file = request.files['file']
+    if file and file.filename != '' and allowed_file(file.filename):
+        timestr = time.strftime("%Y%m%d-%H%M%S")
+        filename = timestr + secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        post.img_url = url_for('static', filename='uploads/%s' % filename)
     post_repository.save_post(post)
     return jsonify({'code': 'SUCCESS'})
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route('/api/post', methods=['GET'])
@@ -123,9 +140,12 @@ def list_post():
     page = 1 if not page else int(page)
     size = 10 if not size else int(size)
     result = post_repository.post_list(page=page, size=size)
+    for post in result:
+        if post['img_url']:
+            post['img_url'] = request.url_root[0:len(request.url_root)-1] + post['img_url']
     total = post_repository.post_count()
     print total[0]
-    return jsonify({'total': total[0]['total'],'data':result})
+    return jsonify({'total': total[0]['total'], 'data': result})
 
 
 @app.route('/api/comment', methods=['POST'])
@@ -138,7 +158,7 @@ def post_comment():
     user = None
     if 'login_user' in session:
         user = session['login_user']
-    comment = models.Comment(body, user, int(post_id), datetime.now())
+    comment = models.Comment(body, user, int(post_id), long(time.time()))
     comment_repository.save_comment(comment)
     return jsonify({'code': 'SUCCESS'})
 
@@ -146,8 +166,7 @@ def post_comment():
 @app.route('/api/post/<int:post_id>', methods=['GET'])
 @cors_util.crossdomain(origin='*')
 def post_detail(post_id):
-    return jsonify(post_repository.post_detail(post_id))\
-
+    return jsonify(post_repository.post_detail(post_id))
 
 
 @app.route('/api/banners', methods=['GET'])
@@ -157,6 +176,7 @@ def banner_list():
     with open(json_url) as banner_json:
         data = json.load(banner_json)
         return jsonify(data)
+
 
 if __name__ == '__main__':
     # Load default config
