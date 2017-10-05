@@ -4,13 +4,12 @@ import sys
 
 from datetime import datetime
 import jinja2
-from flask import Flask, request, g, render_template, flash, jsonify, session
+from flask import Flask, request, g, render_template, flash, jsonify, session, json
 
 from service.model import models
 from service.repository import user_repository
 from service.repository import post_repository
 from service.repository import comment_repository
-
 from service.util import cors_util
 
 app = Flask(__name__, template_folder='static/html', static_url_path='')
@@ -145,7 +144,17 @@ def post_comment():
 @app.route('/api/post/<int:post_id>', methods=['GET'])
 @cors_util.crossdomain(origin='*')
 def post_detail(post_id):
-    return jsonify(post_repository.post_detail(post_id))
+    return jsonify(post_repository.post_detail(post_id))\
+
+
+
+@app.route('/api/banners', methods=['GET'])
+@cors_util.crossdomain(origin='*')
+def banner_list():
+    json_url = os.path.join(app.root_path, "static/js", "img.json")
+    with open(json_url) as banner_json:
+        data = json.load(banner_json)
+        return jsonify(data)
 
 if __name__ == '__main__':
     # Load default config
