@@ -32,3 +32,10 @@ form {
 ul,li{
   list-style: none;
 }
+button：active{
+background-color: #d2171f;;
+}
+button:disabled{
+background-color: #d2171f;
+  	opacity: 0.5;
+}

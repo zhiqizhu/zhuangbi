@@ -211,3 +211,16 @@ time {
   background-color: #ed745d;
   outline: none;
 }
+
+.paging{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.paging li{
+  margin: 0 10px;
+  color: #ccc;
+  font-size: 14px;
+
+}

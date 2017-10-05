@@ -1,77 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>逼乎首页</title>
-  <link rel="stylesheet" href="../css/index.css">
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/swiper-3.4.2.min.css">
+    <meta charset="UTF-8">
+    <title>逼乎首页</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/swiper-3.4.2.min.css">
 </head>
 <body>
 <header class="header_flxed">
-  <nav class="nav">
-    <a href="#" class="logo">
-      <span>逼乎</span>
-    </a>
-    <input class="search" type='text' placeholder="搜索">
-    <div class="user">
-      <a class="user_info">
-        <div class="avatar" data-hover="dropdrown">
-          <img src="../img/2.jpeg" alt="avatar">
-        </div>
-      </a>
-      <button class="write" onclick="javascript:location.href='./write.html'">写文章</button>
-    </div>
-    <ul class="dropdown-menu">
-      <li> 我的文章</li>
-      <li> 我的主页</li>
-    </ul>
-  </nav>
-</header>
-<div class="page_index">
-  <div class="wrapper">
-    <section class="bannar">
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <img class="swiper-slide" v-for="banner in banners" v-bind:src="banner">
-        </div>
-        <!-- 如果需要分页器 -->
-        <div class="swiper-pagination"></div>
-
-      </div>
-    </section>
-    <section class="content" id="ul">
-      <ul class="content_container" id="content_container">
-          <li class="content_item" v-for="post in posts">
-            <div class="avatar">
-              <img src="../img/1.jpeg" alt="">
-            </div>
-            <a href="#" class="user_name">酷酷的梦女神</a>
-            <time>13小时前</time>
-            <a v-bind:href="'page.html?id='+post.id">
-              <p class="title">{{ post.title }}</p>
-              <div class="content_main">
-                <p class="contents" v-html="post.content">
-
-                </p>
-                <div class="content_pic">
-                  <img src="../img/11.jpeg">
+    <nav class="nav">
+        <a href="#" class="logo">
+            <span>逼乎</span>
+        </a>
+        <input class="search" type='text' placeholder="搜索">
+        <div class="user">
+            <a class="user_info">
+                <div class="avatar" data-hover="dropdrown">
+                    <img src="../img/2.jpeg" alt="avatar">
                 </div>
-              </div>
-              <div class="comment">
-                <span>评论 (367)</span>
-                <span>喜欢(532)</span>
-              </div>
             </a>
-          </li>
-      </ul>
+            <button class="write" onclick="javascript:location.href='./write.html'">写文章</button>
+        </div>
+        <ul class="dropdown-menu">
+            <li> 我的文章</li>
+            <li> 我的主页</li>
+        </ul>
+    </nav>
+</header>
+<div class="page_index" id="ul">
+    <div class="wrapper">
+        <section class="bannar">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <img class="swiper-slide" v-for="banner in banners" v-bind:src="banner">
 
-      <div class="button-center">
-        <button class="learnmore">阅读更多</button>
-      </div>
+                </div>
 
-    </section>
-  </div>
+            </div>
+        </section>
+        <section class="content">
+            <ul class="content_container" id="content_container">
+                <li class="content_item" v-for="post in posts">
+                    <div class="avatar">
+                        <img src="../img/1.jpeg" alt="">
+                    </div>
+                    <a href="#" class="user_name">酷酷的梦女神</a>
+                    <time>13小时前</time>
+                    <a v-bind:href="'page.html?id='+post.id">
+                        <p class="title">{{ post.title }}</p>
+                        <div class="content_main">
+                            <p class="contents" v-html="post.content">
+
+                            </p>
+                            <div class="content_pic">
+                                <img src="../img/11.jpeg">
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <span>评论 (367)</span>
+                            <span>喜欢(532)</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="button-center">
+                <!--
+              <button class="learnmore" @click="pageFunction()">阅读更多</button>
+                -->
+                <ul class="paging">
+                    <li><a href="#"> 1</a></li>
+                    <li><a href="#"> 2</a></li>
+                </ul>
+            </div>
+
+        </section>
+    </div>
 </div>
 </body>
 <script type="text/javascript" src="../js/framework/jquery.min.js"></script>
