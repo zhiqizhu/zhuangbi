@@ -33,13 +33,7 @@
     <section class="bannar">
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <img class="swiper-slide"
-               src="//upload.jianshu.io/admin_banners/web_images/3052/85b826f83eebc8051ad35b06b74f3e71d0f31060.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540">
-          <img class="swiper-slide"
-               src="//upload.jianshu.io/admin_banners/web_images/3053/73bbf53322c5f36f22e35ba3cdcf732c2fd5e479.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540">
-          <img class="swiper-slide"
-               src="//upload.jianshu.io/admin_banners/web_images/3053/73bbf53322c5f36f22e35ba3cdcf732c2fd5e479.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540">
-
+          <img class="swiper-slide" v-for="banner in banners" v-bind:src="banner">
         </div>
         <!-- 如果需要分页器 -->
         <div class="swiper-pagination"></div>

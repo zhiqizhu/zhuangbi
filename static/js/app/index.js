@@ -28,7 +28,8 @@ $(document).ready(function () {
     var vm = new Vue({
         el: "#ul",
         data: {
-            posts:[]
+            posts:[],
+            banners:[]
         },
         mounted: function () {
             $.ajax({
@@ -36,10 +37,20 @@ $(document).ready(function () {
                 method: "get",
                 type: "json",
                 success: function (data) {
-                    console.log(data)
                     vm.posts=data;
                 }
             })
+            $.ajax({
+                url:"/zhuangbi/js/img.json",
+                method: "get",
+                type: "json",
+                success: function (data) {
+                    console.log(data.data)
+                    vm.banners=data.data;
+                }
+
+            })
         }
+
     })
 });
