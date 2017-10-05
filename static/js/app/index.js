@@ -41,7 +41,7 @@ $(document).ready(function () {
                 }
             })
             $.ajax({
-                url:"/zhuangbi/js/img.json",
+                url:"http://127.0.0.1:5000/api/banners",
                 method: "get",
                 type: "json",
                 success: function (data) {
