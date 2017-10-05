@@ -12,91 +12,25 @@
 </head>
 
 <body>
-<section class="left">
-    <button class="back btn_left "><a href="index.html">回首页</a></button>
-    <button class="submit btn_left">提交</button>
-</section>
-<section class="right">
-    <input id="title" class="title focus" placeholder="这里输入题目" focus>
-    <textarea id="editor" placeholder="hah" autofocus></textarea>
-    <input type="hidden" name="key" value="val"/>
+<div id="edit">
 
-</section>
+
+    <section class="left">
+        <button class="back btn_left "><a href="index.html">回首页</a></button>
+        <button class="submit btn_left" v-on:click="onSubmit()">提交</button>
+    </section>
+    <section class="right" id="right">
+        <input id="title" class="title focus" v-model="title" placeholder="这里输入题目" focus>
+        <textarea id="editor" placeholder="hah" autofocus v-model="content"></textarea>
+        <input type="hidden" name="key" value="val"/>
+    </section>
+</div>
 </body>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/module.min.js"></script>
-<script src="../js/hotkeys.min.js"></script>
-<script src="../js/simditor.min.js"></script>
-<script src="../js/uploader.min.js"></script>
-<script>
-
-    var editor = new Simditor({
-        textarea: $('#editor'),
-        placeholder: '随便写会让你灵感迸发哦~',
-        params: {},
-        upload: {
-            url: '',
-            params: null,
-            fileKey: 'upload_file',
-            connectionCount: 3,
-            leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
-        },
-        tabIndent: true,
-        toolbar: [
-            'title',
-            'bold',
-            'italic',
-            'underline',
-            'strikethrough',
-            'fontScale',
-            'color',
-            'ol',
-            'ul',
-            'blockquote',
-            'code',
-            'table',
-            'link',
-            'image',
-            'hr',
-            'indent',
-            'outdent',
-            'alignment'
-        ],
-        allowedTags: ['br', 'span', 'a', 'img', 'b', 'strong', 'i', 'strike', 'u', 'font', 'p', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'h1', 'h2', 'h3', 'h4', 'hr'],
-        toolbarFloat: true,
-        toolbarFloatOffset: 0,
-        toolbarHidden: false,
-        pasteImage: false,
-        cleanPaste: false
-    });
-    $(document).ready(function () {
-        var submit = $('.submit');
-        submit.click(function () {
-            var title = $('#title').val();
-            var content = $("#editor").val();
-            console.log(title);
-            console.log(content);
-            if (title===""||content===""){
-                alert('请先输入内容')
-            }
-            $.ajax({
-                url: "http://127.0.0.1:5000/api/post",
-                method: "post",
-                type: "json",
-                data: $.param({
-                    title: title,
-                    content: content
-                }),
-                success:function () {
-                    window.location="index.html"
-                }
-            })
-
-
-        })
-    })
-
-
-</script>
-
+<script src="../js/framework/jquery.min.js"></script>
+<script src="../js/framework/module.min.js"></script>
+<script src="../js/framework/hotkeys.min.js"></script>
+<script src="../js/framework/simditor.min.js"></script>
+<script src="../js/framework/uploader.min.js"></script>
+<script src="../js/framework/vue.js"></script>
+<script src="../js/app/write.js"></script>
 </html>

@@ -12,17 +12,17 @@
 
 <header class="header_flxed">
     <nav class="nav">
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
             <span>逼乎</span>
         </a>
         <input class="search" type='text' placeholder="搜索">
         <div class="user">
-            <a class="user_info">
+            <a class="user_info" >
                 <div class="avatar" data-hover="dropdrown">
                     <img src="../img/2.jpeg" alt="avatar">
                 </div>
             </a>
-            <button class="write">写文章</button>
+            <a class="write" href="write.html" >写文章</a>
         </div>
         <ul class="dropdown-menu">
             <li> 我的文章</li>
@@ -30,36 +30,34 @@
         </ul>
     </nav>
 </header>
-<div class="page_single">
-    <div class="article" id="article">
+<div class="page_single" id="article">
+    <div class="article">
         <!--title-->
-        <script type="text/x-handlebars-template" id="template">
-            <h1 class="title">{{ title }}</h1>
-            <!--作者信息-->
-            <div class="author">
-                <div class="avatar">
-                    <img src="../img/1.jpeg" alt="">
-                </div>
-                <div class="author_info">
-                    <a href="#" class="user_name">酷酷的梦女神</a>
-                    <a href="#" class="user_comment">评论 (<span>12</span>)</a>
-                </div>
-            </div>
-            <!--文章内容-->
-            <div class="content">
-                <img src="../img/3.jpeg" class="content_img">
-                <p>
-                    {{{ content }}}</p>
-            </div>
-        </script>
-        <button class="btn_pay"><a href="#">赞赏和支持</a></button>
-    </div>
-    <div class="new_comments">
-        <form action="" id="comment_form">
+        <h1 class="title" v-text="title"></h1>
+        <!--作者信息-->
+        <div class="author">
             <div class="avatar">
                 <img src="../img/1.jpeg" alt="">
             </div>
-            <textarea placeholder="写下你的评论..."></textarea>
+            <div class="author_info">
+                <a href="#" class="user_name">酷酷的梦女神</a>
+                <a href="#" class="user_comment">评论 (<span>12</span>)</a>
+            </div>
+        </div>
+        <!--文章内容-->
+        <div class="content">
+            <img src="../img/3.jpeg" class="content_img">
+            <p v-html="content"></p>
+        </div>
+        <button class="btn_pay"><a href="#">赞赏和支持</a></button>
+    </div>
+    <div class="new_comments">
+        <form action="" id="comment_form" v-on:submit.prevent="comment_submit">
+            <div class="avatar">
+                <img src="../img/1.jpeg" alt="">
+            </div>
+            <textarea placeholder="写下你的评论..." v-model="comment"></textarea>
+            <button type="submit" class="submit_comment">提交评论</button>
         </form>
     </div>
     <div class="comment">
@@ -71,7 +69,7 @@
             </div>
         </div>
         <ul>
-            <li class="comment_item">
+            <li class="comment_item" v-for="comment in comments">
                 <div class="author">
                     <div class="avatar">
                         <img src="../img/1.jpeg" alt="">
@@ -82,44 +80,16 @@
                     </div>
                 </div>
                 <p class="comment_content">
-                    对于生长，生活，工作，我们或多或少有着这样那样的困惑。
-                    这些困惑，与其说是方法上的不得要领，不如说是我们思维上的闭塞。
-                    拆掉思维的墙，就是拆掉我们旧的认知和心智模式。
-                </p>
-            </li>
-            <li class="comment_item">
-                <div class="author">
-                    <div class="avatar">
-                        <img src="../img/1.jpeg" alt="">
-                    </div>
-                    <div class="author_info">
-                        <a href="#" class="user_name">酷酷的梦女神</a>
-                        <span class="user_time">2017.03.14</span>
-                    </div>
-                </div>
-                <p class="comment_content">
-                    对于生长，生活，工作，我们或多或少有着这样那样的困惑。
-                    这些困惑，与其说是方法上的不得要领，不如说是我们思维上的闭塞。
-                    拆掉思维的墙，就是拆掉我们旧的认知和心智模式。
+                    {{ comment.body }}
                 </p>
             </li>
         </ul>
     </div>
 </div>
 </body>
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/handlebars-v4.0.10.js"></script>
+<script type="text/javascript" src="../js/framework/jquery.min.js"></script>
+<script type="text/javascript" src="../js/framework/handlebars-v4.0.10.js"></script>
+<script src="../js/framework/vue.js"></script>
+<script src="../js/app/page.js"></script>
 
-<script>
-    $.ajax({
-        url: "http://127.0.0.1:5000/api/post/+'data[id]',
-        method: "get",
-        type: "json",
-        success: function (data) {
-            var template = Handlebars.compile($('#template').html());
-            console.log(data);
-            $('#article').html(template(data))
-        }
-    })
-</script>
 </html>

@@ -44,31 +44,21 @@
         <!-- 如果需要分页器 -->
         <div class="swiper-pagination"></div>
 
-        <!-- 如果需要导航按钮 -->
-        <!--<div class="swiper-button-prev swiper-button"></div>-->
-        <!--<div class="swiper-button-next swiper-button"></div>-->
-
-        <!-- 如果需要滚动条 -->
-        <!--<div class="swiper-scrollbar"></div>-->
       </div>
     </section>
-    <section class="content">
-
+    <section class="content" id="ul">
       <ul class="content_container" id="content_container">
-
-        <script type="text/x-handlebars-template" id="template">
-          {{#each this}}
-          <li class="content_item">
+          <li class="content_item" v-for="post in posts">
             <div class="avatar">
               <img src="../img/1.jpeg" alt="">
             </div>
             <a href="#" class="user_name">酷酷的梦女神</a>
             <time>13小时前</time>
-            <a href="#">
-              <p class="title">{{title}}</p>
+            <a v-bind:href="'page.html?id='+post.id">
+              <p class="title">{{ post.title }}</p>
               <div class="content_main">
-                <p class="contents">
-                  {{{content}}}
+                <p class="contents" v-html="post.content">
+
                 </p>
                 <div class="content_pic">
                   <img src="../img/11.jpeg">
@@ -80,8 +70,6 @@
               </div>
             </a>
           </li>
-          {{/each}}
-        </script>
       </ul>
 
       <div class="button-center">
@@ -92,64 +80,15 @@
   </div>
 </div>
 </body>
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/swiper-3.4.2.jquery.min.js"></script>
-<script type="text/javascript" src="../js/handlebars-v4.0.10.js"></script>
+<script type="text/javascript" src="../js/framework/jquery.min.js"></script>
+<script type="text/javascript" src="../js/framework/swiper-3.4.2.jquery.min.js"></script>
+<script type="text/javascript" src="../js/framework/handlebars-v4.0.10.js"></script>
+<script type="text/javascript" src="../js/framework/vue.js"></script>
+<script type="text/javascript" src="../js/app/index.js"></script>
+
 
 <script type="text/javascript">
 
-  //mouseover 的效果
-  $('.user_info').mouseover(function () {
-    $('.dropdown-menu').addClass('open');
-  })
-  $('.user_info').mouseout(function () {
-    $('.dropdown-menu').removeClass('open');
-  })
-
-  //swiper 的效果
-  var mySwiper = new Swiper('.swiper-container', {
-    direction: 'vertical',
-    loop: true,
-    autoplay: 5000,
-
-    // 如果需要分页器
-    pagination: '.swiper-pagination',
-
-    // 如果需要前进后退按钮
-    nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev'
-
-    // 如果需要滚动条
-//    scrollbar: '.swiper-scrollbar',
-  })
-
-  // 给列表绑定数据
-  $(document).ready(function () {
-    $.ajax({
-      url: "http://127.0.0.1:5000/api/post",
-      method: "get",
-      type: "json",
-      success: function (data) {
-        console.log(data.length);
-        // 这是用handlebar的方式
-        var template = Handlebars.compile($('#template').html());
-        $("#content_container").html(template(data));
-
-        //这是不用模板的方式
-
-//                for (var i = 0; i < data.length; i++) {
-//                    var li = $("#template").clone();
-//                    var title = li.find(".title");
-//                    var content = li.find(".contents");
-//                    title.text(data[i].title);
-//                    content.html(data[i].content);
-//                    li.removeAttr('id').appendTo(".content_container");
-//                }
-      }
-    })
-
-
-  })
 
 </script>
 </html>

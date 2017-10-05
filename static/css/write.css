@@ -4,6 +4,11 @@ body {
     height: 100%;
 }
 
+#edit {
+    width: 100%;
+    height: 100%;
+}
+
 .left {
     width: 20%;
     float: left;
@@ -14,7 +19,7 @@ body {
     justify-content: center;
 }
 
-.btn_left{
+.btn_left {
     width: 70%;
     height: 40px;
     background-color: #3f3f3f;
@@ -69,9 +74,13 @@ body {
 }
 
 .simditor-placeholder {
-    top: 50px;
+    top: 40px;
 }
 
-.left .select {
-
+.right textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 20px;
+    font-size: 14px;
 }

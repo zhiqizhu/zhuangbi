@@ -113,3 +113,15 @@
 .comment_content+div{
   padding-bottom: 20px;
 }
+.submit_comment{
+  width: 100px;
+    height: 38px;
+    background-color: #ed745d;
+    border: none;
+    color: white;
+    line-height: 24px;
+    margin: 9px 15px 0;
+    border-radius: 4px;
+    font-size: 15px;
+      float: right;
+}

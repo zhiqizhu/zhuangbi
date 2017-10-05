@@ -70,12 +70,14 @@ input:-moz-placeholder {
   justify-content: space-around;
 }
 .write{
+  display: block;
   width: 100px;
   height: 38px;
+  text-align: center;
+  line-height: 38px;
   background-color: #ed745d;
   border: none;
   color: white;
-  line-height: 24px;
   margin: 9px 15px 0;
   border-radius: 4px;
   font-size: 15px;
@@ -115,7 +117,8 @@ input:-moz-placeholder {
 
 .wrapper {
   width: 960px;
-  margin: 0 auto;
+  margin: 120px auto;
+
   height: 100%;
 }
 
