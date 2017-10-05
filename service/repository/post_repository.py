@@ -13,6 +13,11 @@ def post_list(page, size):
     return dbaccess.query_for_map(sql)
 
 
+def post_count():
+    sql = "SELECT COUNT(1) as total FROM t_post"
+    return dbaccess.query_for_map(sql)
+
+
 def post_detail(post_id):
     sql = "SELECT * FROM t_post WHERE id = ?"
     post = dbaccess.query_for_map(sql, post_id)

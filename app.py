@@ -123,7 +123,9 @@ def list_post():
     page = 1 if not page else int(page)
     size = 10 if not size else int(size)
     result = post_repository.post_list(page=page, size=size)
-    return jsonify(result)
+    total = post_repository.post_count()
+    print total[0]
+    return jsonify({'total': total[0]['total'],'data':result})
 
 
 @app.route('/api/comment', methods=['POST'])
