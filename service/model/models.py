@@ -6,12 +6,13 @@ class User:
 
 
 class Post:
-    def __init__(self, title, content, created_at=None, author_id=None, updated_at=None):
+    def __init__(self, title, content, created_at=None, author_id=None, updated_at=None, img_url = None):
         self.author_id = author_id
         self.title = title
         self.content = content
         self.created_at = created_at
         self.updated_at = updated_at
+        self.img_url = img_url
 
 
 class Comment:

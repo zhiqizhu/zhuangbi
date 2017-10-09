@@ -3,8 +3,8 @@ from datetime import datetime
 
 
 def save_post(post):
-    return dbaccess.insert("INSERT INTO t_post(title, content, created_at, author) VALUES (?,?,?,?)", post.title,
-                           post.content, datetime.now(), post.author_id
+    return dbaccess.insert("INSERT INTO t_post(title, content, created_at, author, img_url) VALUES (?,?,?,?,?)", post.title,
+                           post.content, datetime.now(), post.author_id, post.img_url
                            )
 
 
