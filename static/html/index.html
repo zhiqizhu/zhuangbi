@@ -48,7 +48,7 @@
                     <a href="#" class="user_name">酷酷的梦女神</a>
                     <time>13小时前</time>
                     <a v-bind:href="'page.html?id='+post.id">
-                        <p class="title">{{ post.title }}</p>
+                        <p class="title" v-cloak>{{ post.title }}</p>
                         <div class="content_main">
                             <p class="contents" v-html="post.content">
 
@@ -66,13 +66,14 @@
             </ul>
 
             <div class="button-center">
-                <!--
+                 <!--
               <button class="learnmore" @click="pageFunction()">阅读更多</button>
-                -->
+               -->
+
                 <ul class="paging">
-                    <li><a href="#"> 1</a></li>
-                    <li><a href="#"> 2</a></li>
+                   <li v-for="n in pagingNum"><a href="#" @click.stop.prevent="pagingFunction(n)">{{ n }}</a></li>
                 </ul>
+
             </div>
 
         </section>

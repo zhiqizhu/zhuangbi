@@ -13,13 +13,27 @@ body {
     width: 20%;
     float: left;
     height: 100%;
-    position: absolute;
     background-color: #3f3f3f;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+        flex-direction: column;
 }
 
-.btn_left {
+/*.btn_left {*/
+    /*width: 70%;*/
+    /*height: 40px;*/
+    /*background-color: #3f3f3f;*/
+    /*border: 1px solid rgba(236, 114, 89, 0.7);*/
+    /*text-align: center;*/
+    /*border-radius: 5px;*/
+    /*font-size: 15px;*/
+    /*outline: none;*/
+/*}*/
+
+.left button{
+    margin: 60px auto;
+     color: #ec7259;
     width: 70%;
     height: 40px;
     background-color: #3f3f3f;
@@ -29,16 +43,20 @@ body {
     font-size: 15px;
     outline: none;
 }
-
-.left .back {
-    margin: 60px auto;
+.upload{
+    color: #ec7259;
+     width: 70%;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+     margin: 60px auto;
 }
 
-.left .submit {
-    margin: 200px auto;
-    position: absolute;
-    color: #ec7259;;
-}
+/*.left .submit {*/
+    /*margin: 200px auto;*/
+    /*position: absolute;*/
+    /*color: #ec7259;;*/
+/*}*/
 
 .btn_left:hover {
     border-color: #ec7259;

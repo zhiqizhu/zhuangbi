@@ -12,19 +12,21 @@
 </head>
 
 <body>
-<div id="edit">
+<form id="edit"  enctype="multipart/form-data" method="post">
 
 
     <section class="left">
         <button class="back btn_left "><a href="index.html">回首页</a></button>
         <button class="submit btn_left" v-on:click="onSubmit()">提交</button>
+        <div class="upload">
+            <input type="file" name='file'>
+        </div>
     </section>
     <section class="right" id="right">
-        <input id="title" class="title focus" v-model="title" placeholder="这里输入题目" focus>
-        <textarea id="editor" placeholder="hah" autofocus v-model="content"></textarea>
-        <input type="hidden" name="key" value="val"/>
+        <input id="title" class="title focus" v-model="title" placeholder="这里输入题目" focus  name="title">
+        <textarea id="editor" placeholder="hah" autofocus v-model="content" name="content"></textarea>
     </section>
-</div>
+</form>
 </body>
 <script src="../js/framework/jquery.min.js"></script>
 <script src="../js/framework/module.min.js"></script>

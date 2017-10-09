@@ -5,6 +5,7 @@ var vm = new Vue({
         content: "",
         comment: "",
         comments: [],
+        comment_total:1
     },
     methods: {
         GetQueryString: function (name) {
@@ -25,7 +26,6 @@ var vm = new Vue({
 
                 }),
                 success: function (data) {
-                    console.log(data)
                     if(data.code==="SUCCESS") {
                         _this.load_data();
                         _this.comment='';
@@ -40,10 +40,10 @@ var vm = new Vue({
                 method: "get",
                 type: "json",
                 success: function (data) {
-                    console.log(data)
                     _this.title = data.title;
                     _this.content = data.content;
                     _this.comments = data.comments;
+                    _this.comment_total++;
                 }
             })
         }
