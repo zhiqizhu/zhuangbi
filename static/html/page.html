@@ -37,7 +37,7 @@
         <!--作者信息-->
         <div class="author">
             <div class="avatar">
-                <img src="../img/1.jpeg" alt="">
+                <img v-bind:src="img_url" alt="">
             </div>
             <div class="author_info">
                 <a href="#" class="user_name">酷酷的梦女神</a>
@@ -46,7 +46,7 @@
         </div>
         <!--文章内容-->
         <div class="content">
-            <img src="../img/3.jpeg" class="content_img">
+            <img v-bind:src="img_url" class="content_img">
             <p v-html="content"></p>
         </div>
         <button class="btn_pay"><a href="#">赞赏和支持</a></button>

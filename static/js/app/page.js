@@ -5,7 +5,8 @@ var vm = new Vue({
         content: "",
         comment: "",
         comments: [],
-        comment_total:1
+        img_url:'',
+        comment_total:0
     },
     methods: {
         GetQueryString: function (name) {
@@ -43,7 +44,8 @@ var vm = new Vue({
                     _this.title = data.title;
                     _this.content = data.content;
                     _this.comments = data.comments;
-                    _this.comment_total++;
+                    _this.img_url=data.img_url;
+                    _this.comment_total = data.comments.length;
                 }
             })
         }

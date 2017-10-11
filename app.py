@@ -166,7 +166,10 @@ def post_comment():
 @app.route('/api/post/<int:post_id>', methods=['GET'])
 @cors_util.crossdomain(origin='*')
 def post_detail(post_id):
-    return jsonify(post_repository.post_detail(post_id))
+    post = post_repository.post_detail(post_id)
+    if post['img_url']:
+        post['img_url'] = request.url_root[0:len(request.url_root) - 1] + post['img_url']
+    return jsonify(post)
 
 
 @app.route('/api/banners', methods=['GET'])

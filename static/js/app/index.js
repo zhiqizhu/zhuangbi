@@ -24,7 +24,7 @@ $(document).ready(function () {
             banners: [],
             page: "1",
             paging: "1",
-            pagingNum: ''
+            pagingNum: '',
         },
         mounted: function () {
             this.pagingFunction();
